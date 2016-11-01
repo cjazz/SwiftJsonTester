@@ -5,12 +5,12 @@
 //  Created by Adam Chin
 //  Copyright © 2016 hushbox. All rights reserved.
 //
-
+// SwiftJsonTester/MoreOffers.json
 import UIKit
 
 class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate {
     
-    let url_to_request:String = "https://raw.githubusercontent.com/cjazz/iOSJSONTester/master/offers.json"
+    let url_to_request:String = "https://raw.githubusercontent.com/cjazz/SwiftJsonTester/master/MoreOffers.json"
     
     var downloadTask: URLSessionDownloadTask!
     var backgroundSession: Foundation.URLSession!
