@@ -14,13 +14,17 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
     
     var downloadTask: URLSessionDownloadTask!
     var backgroundSession: Foundation.URLSession!
+    var offersArray: NSArray!
     
     @IBOutlet weak var VButton: UIButton!
     
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
         VButton.layer.cornerRadius = 5
         VButton.layer.borderWidth = 1
@@ -35,6 +39,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
 
     @IBAction func startDownload(_ sender: AnyObject) {
         let url = URL(string: url_to_request)!
+        indicator.startAnimating()
         downloadTask = backgroundSession.downloadTask(with: url)
         downloadTask.resume()
     }
@@ -53,6 +58,9 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
             downloadTask.cancel()
         }
     }
+    @IBAction func undindToHome(segue: UIStoryboardSegue){
+        print("home")
+    }
     
     func showFileWithPath(_ path: String){
         let isFileFound:Bool? = FileManager.default.fileExists(atPath: path)
@@ -68,8 +76,13 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
         super.didReceiveMemoryWarning()
 
     }
-
-    // Mark URLSessionDownloadDelegate
+    
+    
+//    func loadLatestOffersFromDocs() -> NSArray {
+//        //
+//      
+//    }
+    // MARK:  URLSessionDownloadDelegate Methods
     
     func urlSession(_ session: URLSession,
                     downloadTask: URLSessionDownloadTask,
@@ -82,12 +95,31 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
         
         if fileManager.fileExists(atPath: destinationURLForFile.path){
             showFileWithPath(destinationURLForFile.path)
+           
+            let data = NSData(contentsOf: destinationURLForFile)
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data! as Data, options: [])
+                
+                offersArray = json as! NSArray
+                
+                print("offers: \(offersArray)")
+                
+            } catch {
+                print("error")
+            }
+            
+            
+            self.performSegue(withIdentifier: "showOffers", sender: self)
+            
         }
         else{
             do {
                 try fileManager.moveItem(at: location, to: destinationURLForFile)
                 // show file
                 showFileWithPath(destinationURLForFile.path)
+                
+                
             }catch{
                 print("An error occurred while moving file to destination url")
             }
@@ -111,6 +143,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
         if (error != nil) {
             print("error")
         }else{
+            indicator.stopAnimating()
             print("The task finished transferring data successfully")
         }
     }
@@ -119,7 +152,16 @@ class ViewController: UIViewController, URLSessionDownloadDelegate, UIDocumentIn
         return self
     }
 
-    
 
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showOffers" {
+ 
+            let vc = segue.destination as! OffersVC
+            vc.receivedOffers = offersArray
+            
+            
+        }
+    }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		888670491DF5934700875EBB /* OffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888670481DF5934700875EBB /* OffersVC.swift */; };
 		88FFC8EA1DC8E21C00A75C3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFC8E91DC8E21C00A75C3A /* AppDelegate.swift */; };
 		88FFC8EC1DC8E21C00A75C3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFC8EB1DC8E21C00A75C3A /* ViewController.swift */; };
 		88FFC8EF1DC8E21C00A75C3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88FFC8ED1DC8E21C00A75C3A /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		888670481DF5934700875EBB /* OffersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersVC.swift; sourceTree = "<group>"; };
 		88FFC8E61DC8E21C00A75C3A /* SwiftJsonTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftJsonTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88FFC8E91DC8E21C00A75C3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88FFC8EB1DC8E21C00A75C3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				88FFC8E91DC8E21C00A75C3A /* AppDelegate.swift */,
 				88FFC8EB1DC8E21C00A75C3A /* ViewController.swift */,
 				88FFC8ED1DC8E21C00A75C3A /* Main.storyboard */,
+				888670481DF5934700875EBB /* OffersVC.swift */,
 				88FFC8F01DC8E21C00A75C3A /* Assets.xcassets */,
 				88FFC8F21DC8E21C00A75C3A /* LaunchScreen.storyboard */,
 				88FFC8F51DC8E21C00A75C3A /* Info.plist */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88FFC8EC1DC8E21C00A75C3A /* ViewController.swift in Sources */,
+				888670491DF5934700875EBB /* OffersVC.swift in Sources */,
 				88FFC8EA1DC8E21C00A75C3A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +266,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PW6A8Y96ZX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SwiftJsonTester",
+				);
 				INFOPLIST_FILE = SwiftJsonTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hushbox.jsonTeser.SwiftJsonTester;
@@ -275,6 +283,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PW6A8Y96ZX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SwiftJsonTester",
+				);
 				INFOPLIST_FILE = SwiftJsonTester/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hushbox.jsonTeser.SwiftJsonTester;
@@ -302,6 +314,7 @@
 				88FFC8FA1DC8E21C00A75C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
